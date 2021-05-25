@@ -50,15 +50,19 @@ const TabNavigator = () => {
               style={{
                 alignContent: "center",
                 justifyContent: "center",
-                top: 5,
+                width: 40,
+                height: 40,
+                paddingLeft: 8,
+                borderRadius: 20,
+                backgroundColor: "#efefef",
               }}
             >
               <Image
                 source={require(`../../assets/img/home.png`)}
                 resizeMode="contain"
                 style={{
-                  width: 30,
-                  height: 30,
+                  width: 25,
+                  height: 25,
                   tintColor: "#748c9e",
                 }}
               />
@@ -93,15 +97,19 @@ const TabNavigator = () => {
               style={{
                 alignContent: "center",
                 justifyContent: "center",
-                top: 5,
+                width: 40,
+                height: 40,
+                paddingLeft: 8,
+                borderRadius: 20,
+                backgroundColor: "#efefef",
               }}
             >
               <Image
                 source={require(`../../assets/img/payment.png`)}
                 resizeMode="contain"
                 style={{
-                  width: 30,
-                  height: 30,
+                  width: 25,
+                  height: 25,
                   tintColor: focused ? "#e32f45" : "#748c9e",
                 }}
               />
