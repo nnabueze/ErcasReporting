@@ -14,6 +14,7 @@ import {
   View,
 } from "native-base";
 import React from "react";
+import { Image } from "react-native";
 
 import DashboardLogic from "./DashboardLogic";
 
@@ -21,7 +22,11 @@ const Dashboard = () => {
   const { navigateToScreen } = DashboardLogic();
   return (
     <Container>
-      <Header>
+      <Header
+        style={{
+          elevation: 0,
+        }}
+      >
         <Left>
           <Button transparent>
             <Icon name="menu" />
