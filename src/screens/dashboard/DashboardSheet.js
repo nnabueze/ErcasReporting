@@ -115,7 +115,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   monthlyAmountText: {
-    fontSize: 20,
+    fontSize: 17,
     fontWeight: "bold",
   },
   monthlySummary: {

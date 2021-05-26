@@ -14,6 +14,7 @@ import {
 import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import BagdeIcon from "../../components/BagdeIcon";
+import DisplayNumberFormat from "../../components/DisplayNumberFormat";
 import {
   BADGECOLORONE,
   BADGECOLORTWO,
@@ -90,7 +91,10 @@ const MonthlyContainer = ({
           backgroundColor={indicatorColor}
         />
       </View>
-      <Text style={styles.monthlyAmountText}>{amount}</Text>
+      <DisplayNumberFormat
+        value={amount}
+        textStyle={styles.monthlyAmountText}
+      />
     </View>
     <View style={styles.monthlyContainerTextThree}>
       <Text style={styles.monthlySummary}>{title}</Text>
@@ -130,7 +134,10 @@ const Dashboard = () => {
             viewHight={35}
             viewWidth={35}
           />
-          <Text style={styles.todayAmountText}>100,000,000</Text>
+          <DisplayNumberFormat
+            value={100000000}
+            textStyle={styles.todayAmountText}
+          />
         </View>
 
         <View style={styles.todayAmountContainer2}>
@@ -149,7 +156,7 @@ const Dashboard = () => {
         <View style={styles.remitContainer}>
           <View style={styles.remite}>
             <MonthlyContainer
-              amount={200000}
+              amount={20000000}
               badgeColor={BADGECOLORONE}
               icon="chart-three"
               indicatorAmount={30.5}
