@@ -31,6 +31,25 @@ const CategoryItem = ({ title }) => (
   </View>
 );
 
+const Indicator = ({ tintColor, icon }) => (
+  <>
+    <View style={styles.todayTextOne}>
+      <BagdeIcon
+        backgroundcolor={TARBARICONBACKGROUND}
+        imageHight={13}
+        imageWidth={13}
+        tintColor={tintColor}
+        paddingLeft={3}
+        radius={10}
+        icon={icon}
+        viewHight={20}
+        viewWidth={20}
+      />
+      <Text style={styles.todayTextTwo}>39%</Text>
+    </View>
+  </>
+);
+
 const MonthlyContainer = () => (
   <>
     <View style={styles.monthlyContainerTextOne}>
@@ -47,11 +66,13 @@ const MonthlyContainer = () => (
       />
     </View>
     <View style={styles.monthlyContainerTextTwo}>
-      <Text style={styles.monthlyIndicator}>200</Text>
-      <Text style={styles.monthlyAmountText}>2,000,000</Text>
+      <View style={styles.monthlyIndicator}>
+        <Indicator icon="arrow-up" tintColor={GREEN} />
+      </View>
+      <Text style={styles.monthlyAmountText}>200,000,000</Text>
     </View>
     <View style={styles.monthlyContainerTextThree}>
-      <Text>Hello</Text>
+      <Text style={styles.monthlySummary}>Monthly Summary</Text>
     </View>
   </>
 );
@@ -93,20 +114,7 @@ const Dashboard = () => {
 
         <View style={styles.todayAmountContainer2}>
           <Text style={styles.todayEmptyText}></Text>
-          <View style={styles.todayTextOne}>
-            <BagdeIcon
-              backgroundcolor={TARBARICONBACKGROUND}
-              imageHight={13}
-              imageWidth={13}
-              tintColor={GREEN}
-              paddingLeft={3}
-              radius={10}
-              icon="arrow-up"
-              viewHight={20}
-              viewWidth={20}
-            />
-            <Text style={styles.todayTextTwo}>39%</Text>
-          </View>
+          <Indicator icon="arrow-up" tintColor={GREEN} />
           <Text style={styles.todayTextThree}>Today Summary</Text>
         </View>
       </View>

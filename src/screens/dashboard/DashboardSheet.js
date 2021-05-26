@@ -65,7 +65,7 @@ const styles = StyleSheet.create({
     height: 150,
   },
   remite: {
-    backgroundColor: WHITE,
+    backgroundColor: "#efefef",
     width: 190,
     borderRadius: 10,
     ...ScreenStyle.boxShadow,
@@ -97,24 +97,23 @@ const styles = StyleSheet.create({
   monthlyContainerTextTwo: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
     flexDirection: "row",
+    paddingLeft: 10,
+    paddingRight: 10,
   },
   monthlyContainerTextThree: {
     flex: 1,
-    backgroundColor: "green",
     alignItems: "center",
     justifyContent: "center",
   },
   monthlyAmountText: {
-    flex: 1,
     fontSize: 20,
     fontWeight: "bold",
-    backgroundColor: "orange",
   },
-  monthlyIndicator: {
-    flex: 1,
-    backgroundColor: "purple",
+  monthlySummary: {
+    fontSize: 13,
+    color: PRIMARYCOLORLIGHT,
   },
 });
 
