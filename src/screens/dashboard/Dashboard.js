@@ -3,8 +3,6 @@ import {
   Header,
   Title,
   Content,
-  Footer,
-  FooterTab,
   Button,
   Left,
   Right,
@@ -14,22 +12,18 @@ import {
   View,
 } from "native-base";
 import React from "react";
-import { Image, SectionList, StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
 import BagdeIcon from "../../components/BagdeIcon";
-import ScreenStyle from "../../components/styles/ScreenStyle";
 import {
   GREEN,
-  ICONPAYMENT,
   PRIMARYCOLOR,
-  PRIMARYCOLORLIGHT,
   SECONDARYCOLOR,
   TARBARICONBACKGROUND,
-  TARBARTINITCOLOR,
   WHITE,
 } from "../../Contants";
 
 import DashboardLogic from "./DashboardLogic";
+import styles from "./DashboardSheet";
 
 const CategoryItem = ({ title }) => (
   <View style={styles.sectionView}>
@@ -57,16 +51,7 @@ const Dashboard = () => {
       </Header>
       <View style={styles.searchView}></View>
       <View style={styles.todayAmountView}>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingLeft: 10,
-            paddingRight: 10,
-          }}
-        >
+        <View style={styles.todayAmountContainer}>
           <BagdeIcon
             backgroundcolor={SECONDARYCOLOR}
             imageHight={25}
@@ -78,25 +63,12 @@ const Dashboard = () => {
             viewHight={35}
             viewWidth={35}
           />
-          <Text style={{ color: "#000", fontSize: 33, fontWeight: "bold" }}>
-            1,000,000
-          </Text>
+          <Text style={styles.todayAmountText}>100,000,000</Text>
         </View>
 
-        <View
-          style={{
-            flex: 0.6,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingLeft: 10,
-            paddingRight: 10,
-          }}
-        >
-          <Text style={{ flex: 0.6 }}></Text>
-          <View
-            style={{ flex: 0.8, flexDirection: "row", alignItems: "center" }}
-          >
+        <View style={styles.todayAmountContainer2}>
+          <Text style={styles.todayEmptyText}></Text>
+          <View style={styles.todayTextOne}>
             <BagdeIcon
               backgroundcolor={TARBARICONBACKGROUND}
               imageHight={13}
@@ -108,25 +80,9 @@ const Dashboard = () => {
               viewHight={20}
               viewWidth={20}
             />
-            <Text
-              style={{
-                color: GREEN,
-                fontSize: 13,
-                fontWeight: "bold",
-              }}
-            >
-              39%
-            </Text>
+            <Text style={styles.todayTextTwo}>39%</Text>
           </View>
-          <Text
-            style={{
-              color: PRIMARYCOLORLIGHT,
-              fontSize: 15,
-              flex: 1,
-            }}
-          >
-            Today Summary
-          </Text>
+          <Text style={styles.todayTextThree}>Today Summary</Text>
         </View>
       </View>
       <Content padder style={styles.content}>
@@ -151,70 +107,5 @@ const Dashboard = () => {
     </Container>
   );
 };
-
-const styles = StyleSheet.create({
-  searchView: {
-    height: 180,
-    backgroundColor: PRIMARYCOLOR,
-  },
-  content: {
-    top: -30,
-    marginBottom: 0,
-    paddingBottom: 10,
-  },
-  todayAmountView: {
-    backgroundColor: WHITE,
-    height: 80,
-    marginLeft: 60,
-    marginRight: 60,
-    top: -40,
-    borderRadius: 10,
-    ...ScreenStyle.boxShadow,
-  },
-  header: {
-    elevation: 0,
-    backgroundColor: PRIMARYCOLOR,
-  },
-  remitContainer: {
-    height: 150,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignContent: "center",
-    marginBottom: 10,
-    paddingTop: 10,
-    paddingBottom: 10,
-  },
-  mdaText: {
-    height: 30,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 5,
-  },
-  listMdaView: {
-    height: 150,
-  },
-  remite: {
-    backgroundColor: WHITE,
-    width: 190,
-    borderRadius: 10,
-    ...ScreenStyle.boxShadow,
-  },
-  sectionView: {
-    backgroundColor: WHITE,
-    width: 150,
-    borderRadius: 10,
-    margin: 10,
-    ...ScreenStyle.boxShadow,
-  },
-  categoryText: {
-    color: "#000",
-  },
-  viewCategoryText: {
-    color: PRIMARYCOLORLIGHT,
-    fontWeight: "bold",
-    fontSize: 14,
-    textAlign: "center",
-  },
-});
 
 export default Dashboard;
