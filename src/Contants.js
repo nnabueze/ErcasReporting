@@ -20,3 +20,4 @@ export const ANDROIDSTATUSBARCOLOR = "#000051";
 export const WHITE = "#FFF";
 export const TARBARTINITCOLOR = "#748c9e";
 export const TARBARICONBACKGROUND = "#efefef";
+export const GREEN = "#60ad5e";

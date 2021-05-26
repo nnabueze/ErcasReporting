@@ -16,8 +16,18 @@ import {
 import React from "react";
 import { Image, SectionList, StyleSheet } from "react-native";
 import { FlatList } from "react-native-gesture-handler";
+import BagdeIcon from "../../components/BagdeIcon";
 import ScreenStyle from "../../components/styles/ScreenStyle";
-import { PRIMARYCOLOR, PRIMARYCOLORLIGHT, WHITE } from "../../Contants";
+import {
+  GREEN,
+  ICONPAYMENT,
+  PRIMARYCOLOR,
+  PRIMARYCOLORLIGHT,
+  SECONDARYCOLOR,
+  TARBARICONBACKGROUND,
+  TARBARTINITCOLOR,
+  WHITE,
+} from "../../Contants";
 
 import DashboardLogic from "./DashboardLogic";
 
@@ -47,8 +57,77 @@ const Dashboard = () => {
       </Header>
       <View style={styles.searchView}></View>
       <View style={styles.todayAmountView}>
-        <View style={{ flex: 1, backgroundColor: "black" }}></View>
-        <View style={{ flex: 1, backgroundColor: "red" }}></View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingLeft: 10,
+            paddingRight: 10,
+          }}
+        >
+          <BagdeIcon
+            backgroundcolor={SECONDARYCOLOR}
+            imageHight={25}
+            imageWidth={20}
+            tintColor={WHITE}
+            paddingLeft={8}
+            radius={17}
+            icon="home"
+            viewHight={35}
+            viewWidth={35}
+          />
+          <Text style={{ color: "#000", fontSize: 33, fontWeight: "bold" }}>
+            1,000,000
+          </Text>
+        </View>
+
+        <View
+          style={{
+            flex: 0.6,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            paddingLeft: 10,
+            paddingRight: 10,
+          }}
+        >
+          <Text style={{ flex: 0.6 }}></Text>
+          <View
+            style={{ flex: 0.8, flexDirection: "row", alignItems: "center" }}
+          >
+            <BagdeIcon
+              backgroundcolor={TARBARICONBACKGROUND}
+              imageHight={13}
+              imageWidth={13}
+              tintColor={GREEN}
+              paddingLeft={3}
+              radius={10}
+              icon="arrow-up"
+              viewHight={20}
+              viewWidth={20}
+            />
+            <Text
+              style={{
+                color: GREEN,
+                fontSize: 13,
+                fontWeight: "bold",
+              }}
+            >
+              39%
+            </Text>
+          </View>
+          <Text
+            style={{
+              color: PRIMARYCOLORLIGHT,
+              fontSize: 15,
+              flex: 1,
+            }}
+          >
+            Today Summary
+          </Text>
+        </View>
       </View>
       <Content padder style={styles.content}>
         <View style={styles.remitContainer}>
@@ -61,6 +140,7 @@ const Dashboard = () => {
         </View>
         <View style={styles.listMdaView}>
           <FlatList
+            showsHorizontalScrollIndicator={false}
             horizontal={true}
             data={categoryData}
             renderItem={renderItem}
@@ -85,8 +165,8 @@ const styles = StyleSheet.create({
   todayAmountView: {
     backgroundColor: WHITE,
     height: 80,
-    marginLeft: 15,
-    marginRight: 15,
+    marginLeft: 60,
+    marginRight: 60,
     top: -40,
     borderRadius: 10,
     ...ScreenStyle.boxShadow,

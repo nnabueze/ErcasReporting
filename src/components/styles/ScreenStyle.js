@@ -19,7 +19,7 @@ const ScreenStyle = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.5,
-    elevation: 6,
+    elevation: 8,
   },
 });
 
