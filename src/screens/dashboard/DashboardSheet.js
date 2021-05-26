@@ -69,6 +69,9 @@ const styles = StyleSheet.create({
     width: 190,
     borderRadius: 10,
     ...ScreenStyle.boxShadow,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "stretch",
   },
   sectionView: {
     backgroundColor: WHITE,
@@ -85,6 +88,33 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 14,
     textAlign: "center",
+  },
+  monthlyContainerTextOne: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  monthlyContainerTextTwo: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+  },
+  monthlyContainerTextThree: {
+    flex: 1,
+    backgroundColor: "green",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  monthlyAmountText: {
+    flex: 1,
+    fontSize: 20,
+    fontWeight: "bold",
+    backgroundColor: "orange",
+  },
+  monthlyIndicator: {
+    flex: 1,
+    backgroundColor: "purple",
   },
 });
 

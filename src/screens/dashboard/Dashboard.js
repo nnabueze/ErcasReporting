@@ -31,6 +31,31 @@ const CategoryItem = ({ title }) => (
   </View>
 );
 
+const MonthlyContainer = () => (
+  <>
+    <View style={styles.monthlyContainerTextOne}>
+      <BagdeIcon
+        backgroundcolor={SECONDARYCOLOR}
+        imageHight={25}
+        imageWidth={20}
+        tintColor={WHITE}
+        paddingLeft={8}
+        radius={17}
+        icon="home"
+        viewHight={35}
+        viewWidth={35}
+      />
+    </View>
+    <View style={styles.monthlyContainerTextTwo}>
+      <Text style={styles.monthlyIndicator}>200</Text>
+      <Text style={styles.monthlyAmountText}>2,000,000</Text>
+    </View>
+    <View style={styles.monthlyContainerTextThree}>
+      <Text>Hello</Text>
+    </View>
+  </>
+);
+
 const Dashboard = () => {
   const { categoryData } = DashboardLogic();
 
@@ -45,7 +70,7 @@ const Dashboard = () => {
           </Button>
         </Left>
         <Body>
-          <Title>Header</Title>
+          <Title>Dashboard</Title>
         </Body>
         <Right />
       </Header>
@@ -87,8 +112,12 @@ const Dashboard = () => {
       </View>
       <Content padder style={styles.content}>
         <View style={styles.remitContainer}>
-          <View style={styles.remite}></View>
-          <View style={styles.remite}></View>
+          <View style={styles.remite}>
+            <MonthlyContainer />
+          </View>
+          <View style={styles.remite}>
+            <MonthlyContainer />
+          </View>
         </View>
         <View style={styles.mdaText}>
           <Text style={styles.categoryText}>Top Category</Text>
