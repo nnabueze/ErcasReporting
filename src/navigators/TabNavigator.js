@@ -1,32 +1,24 @@
 import React, { useEffect } from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Image, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import * as Font from "expo-font";
 
 import Dashboard from "../screens/dashboard/Dashboard";
 import Remittance from "../screens/remittance/Remittance";
+import ScreenStyle from "../components/styles/ScreenStyle";
+import {
+  PRIMARYCOLORLIGHT,
+  SECONDARYCOLOR,
+  TARBARICONBACKGROUND,
+  TARBARTINITCOLOR,
+  WHITE,
+} from "../Contants";
 
 const Tab = createBottomTabNavigator();
 
 const CustomTabBarButtom = ({ children, onPress }) => (
-  <TouchableOpacity
-    style={{
-      top: -25,
-      alignContent: "center",
-      justifyContent: "center",
-    }}
-    onPress={onPress}
-  >
-    <View
-      style={{
-        width: 60,
-        height: 60,
-        borderRadius: 30,
-        backgroundColor: "#e32f45",
-      }}
-    >
-      {children}
-    </View>
+  <TouchableOpacity style={styles.customOpacityButtom} onPress={onPress}>
+    <View style={styles.customButtom}>{children}</View>
   </TouchableOpacity>
 );
 
@@ -35,10 +27,7 @@ const TabNavigator = () => {
     <Tab.Navigator
       tabBarOptions={{
         showLabel: false,
-        style: {
-          elevation: 0,
-          height: 60,
-        },
+        style: styles.tarbarOptions,
       }}
     >
       <Tab.Screen
@@ -46,25 +35,11 @@ const TabNavigator = () => {
         component={Dashboard}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignContent: "center",
-                justifyContent: "center",
-                width: 40,
-                height: 40,
-                paddingLeft: 8,
-                borderRadius: 20,
-                backgroundColor: "#efefef",
-              }}
-            >
+            <View style={styles.tarbarIcon}>
               <Image
                 source={require(`../../assets/img/home.png`)}
                 resizeMode="contain"
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: "#748c9e",
-                }}
+                style={styles.tarbarButtom}
               />
             </View>
           ),
@@ -78,11 +53,7 @@ const TabNavigator = () => {
             <Image
               source={require(`../../assets/img/play.png`)}
               resizeMode="contain"
-              style={{
-                width: 30,
-                height: 30,
-                tintColor: "#fff",
-              }}
+              style={styles.customButtomImage}
             />
           ),
           tabBarButton: (props) => <CustomTabBarButtom {...props} />,
@@ -93,25 +64,11 @@ const TabNavigator = () => {
         component={Remittance}
         options={{
           tabBarIcon: ({ focused }) => (
-            <View
-              style={{
-                alignContent: "center",
-                justifyContent: "center",
-                width: 40,
-                height: 40,
-                paddingLeft: 8,
-                borderRadius: 20,
-                backgroundColor: "#efefef",
-              }}
-            >
+            <View style={styles.tarbarIcon}>
               <Image
                 source={require(`../../assets/img/payment.png`)}
                 resizeMode="contain"
-                style={{
-                  width: 25,
-                  height: 25,
-                  tintColor: focused ? "#e32f45" : "#748c9e",
-                }}
+                style={styles.tarbarButtom}
               />
             </View>
           ),
@@ -120,5 +77,44 @@ const TabNavigator = () => {
     </Tab.Navigator>
   );
 };
+
+const styles = StyleSheet.create({
+  customButtom: {
+    width: 55,
+    height: 55,
+    borderRadius: 27,
+    backgroundColor: PRIMARYCOLORLIGHT,
+    ...ScreenStyle.buttomShadow,
+  },
+  customOpacityButtom: {
+    top: -25,
+    alignContent: "center",
+    justifyContent: "center",
+  },
+  customButtomImage: {
+    width: 45,
+    height: 45,
+    tintColor: WHITE,
+  },
+  tarbarButtom: {
+    width: 25,
+    height: 25,
+    tintColor: TARBARTINITCOLOR,
+  },
+  tarbarIcon: {
+    alignContent: "center",
+    justifyContent: "center",
+    width: 40,
+    height: 40,
+    paddingLeft: 8,
+    borderRadius: 20,
+    backgroundColor: TARBARICONBACKGROUND,
+  },
+  tarbarOptions: {
+    height: 50,
+    borderTopColor: WHITE,
+    elevation: 0,
+  },
+});
 
 export default TabNavigator;
