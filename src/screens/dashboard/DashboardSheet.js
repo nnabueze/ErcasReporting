@@ -1,6 +1,13 @@
 import { StyleSheet } from "react-native";
 import ScreenStyle from "../../components/styles/ScreenStyle";
-import { GREEN, PRIMARYCOLOR, PRIMARYCOLORLIGHT, WHITE } from "../../Contants";
+import {
+  BLACK,
+  GRAY,
+  GREEN,
+  PRIMARYCOLOR,
+  PRIMARYCOLORLIGHT,
+  WHITE,
+} from "../../Contants";
 
 const styles = StyleSheet.create({
   searchView: {
@@ -41,7 +48,7 @@ const styles = StyleSheet.create({
   todayTextOne: { flex: 0.8, flexDirection: "row", alignItems: "center" },
   todayTextTwo: { color: GREEN, fontSize: 13, fontWeight: "bold" },
   todayTextThree: { color: PRIMARYCOLORLIGHT, fontSize: 15, flex: 1 },
-  todayAmountText: { color: "#000", fontSize: 33, fontWeight: "bold" },
+  todayAmountText: { color: BLACK, fontSize: 33, fontWeight: "bold" },
   header: {
     elevation: 0,
     backgroundColor: PRIMARYCOLOR,
@@ -65,7 +72,7 @@ const styles = StyleSheet.create({
     height: 150,
   },
   remite: {
-    backgroundColor: "#efefef",
+    backgroundColor: GRAY,
     width: 190,
     borderRadius: 10,
     ...ScreenStyle.boxShadow,
@@ -81,7 +88,7 @@ const styles = StyleSheet.create({
     ...ScreenStyle.boxShadow,
   },
   categoryText: {
-    color: "#000",
+    color: BLACK,
   },
   viewCategoryText: {
     color: PRIMARYCOLORLIGHT,

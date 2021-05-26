@@ -15,7 +15,12 @@ import React from "react";
 import { FlatList } from "react-native-gesture-handler";
 import BagdeIcon from "../../components/BagdeIcon";
 import {
+  BADGECOLORONE,
+  BADGECOLORTWO,
+  GRAY,
   GREEN,
+  INDICATORCOLORONE,
+  INDICATORCOLORTWO,
   PRIMARYCOLOR,
   SECONDARYCOLOR,
   TARBARICONBACKGROUND,
@@ -31,48 +36,64 @@ const CategoryItem = ({ title }) => (
   </View>
 );
 
-const Indicator = ({ tintColor, icon }) => (
+const Indicator = ({ tintColor, icon, amount, backgroundColor, textColor }) => (
   <>
     <View style={styles.todayTextOne}>
       <BagdeIcon
-        backgroundcolor={TARBARICONBACKGROUND}
+        backgroundcolor={GRAY}
         imageHight={13}
         imageWidth={13}
         tintColor={tintColor}
         paddingLeft={3}
-        radius={10}
+        radius={12}
         icon={icon}
         viewHight={20}
         viewWidth={20}
       />
-      <Text style={styles.todayTextTwo}>39%</Text>
+      <Text style={{ color: `${textColor}`, fontSize: 13, fontWeight: "bold" }}>
+        {amount}%
+      </Text>
     </View>
   </>
 );
 
-const MonthlyContainer = () => (
+const MonthlyContainer = ({
+  badgeColor,
+  icon,
+  indicatorIcon,
+  indicatorAmount,
+  indicatorColor,
+  amount,
+  title,
+}) => (
   <>
     <View style={styles.monthlyContainerTextOne}>
       <BagdeIcon
-        backgroundcolor={SECONDARYCOLOR}
+        backgroundcolor={badgeColor}
         imageHight={25}
         imageWidth={20}
         tintColor={WHITE}
         paddingLeft={8}
         radius={17}
-        icon="home"
+        icon={icon}
         viewHight={35}
         viewWidth={35}
       />
     </View>
     <View style={styles.monthlyContainerTextTwo}>
       <View style={styles.monthlyIndicator}>
-        <Indicator icon="arrow-up" tintColor={GREEN} />
+        <Indicator
+          icon={indicatorIcon}
+          tintColor={indicatorColor}
+          textColor={indicatorColor}
+          amount={indicatorAmount}
+          backgroundColor={indicatorColor}
+        />
       </View>
-      <Text style={styles.monthlyAmountText}>200,000,000</Text>
+      <Text style={styles.monthlyAmountText}>{amount}</Text>
     </View>
     <View style={styles.monthlyContainerTextThree}>
-      <Text style={styles.monthlySummary}>Monthly Summary</Text>
+      <Text style={styles.monthlySummary}>{title}</Text>
     </View>
   </>
 );
@@ -105,7 +126,7 @@ const Dashboard = () => {
             tintColor={WHITE}
             paddingLeft={8}
             radius={17}
-            icon="home"
+            icon="chart-one"
             viewHight={35}
             viewWidth={35}
           />
@@ -114,17 +135,39 @@ const Dashboard = () => {
 
         <View style={styles.todayAmountContainer2}>
           <Text style={styles.todayEmptyText}></Text>
-          <Indicator icon="arrow-up" tintColor={GREEN} />
+          <Indicator
+            icon="arrow-up"
+            tintColor={GREEN}
+            textColor={GREEN}
+            backgroundColor={GREEN}
+            amount={20.4}
+          />
           <Text style={styles.todayTextThree}>Today Summary</Text>
         </View>
       </View>
       <Content padder style={styles.content}>
         <View style={styles.remitContainer}>
           <View style={styles.remite}>
-            <MonthlyContainer />
+            <MonthlyContainer
+              amount={200000}
+              badgeColor={BADGECOLORONE}
+              icon="chart-three"
+              indicatorAmount={30.5}
+              indicatorColor={INDICATORCOLORONE}
+              indicatorIcon="arrow-up"
+              title="Monthly Summary"
+            />
           </View>
           <View style={styles.remite}>
-            <MonthlyContainer />
+            <MonthlyContainer
+              amount={1000}
+              badgeColor={INDICATORCOLORTWO}
+              icon="chart-two"
+              indicatorAmount={20.5}
+              indicatorColor={INDICATORCOLORTWO}
+              indicatorIcon="arrow-down"
+              title="Cash At Hand"
+            />
           </View>
         </View>
         <View style={styles.mdaText}>
