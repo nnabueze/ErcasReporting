@@ -3,7 +3,8 @@ import { DATA } from "../../Contants";
 
 const DashboardLogic = () => {
   const [categoryData, setCategoryData] = useState([...DATA]);
-  return { categoryData };
+  const [selectedValue, setSelectedValue] = useState("java");
+  return { categoryData, selectedValue };
 };
 
 export default DashboardLogic;

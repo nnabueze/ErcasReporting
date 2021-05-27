@@ -72,6 +72,9 @@ const styles = StyleSheet.create({
   },
   listMdaView: {
     height: 150,
+    borderRadius: 10,
+    backgroundColor: WHITE,
+    ...ScreenStyle.boxShadow,
   },
   remite: {
     backgroundColor: GRAY,
@@ -123,6 +126,26 @@ const styles = StyleSheet.create({
   monthlySummary: {
     fontSize: 13,
     color: PRIMARYCOLORLIGHT,
+  },
+  picker: {
+    height: 10,
+    width: 150,
+    color: "#fff",
+  },
+  welcomeText: {
+    flex: 0.5,
+    fontSize: 20,
+    color: WHITE,
+  },
+  pickerContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+  },
+  pickerView: {
+    alignItems: "flex-end",
+    top: -50,
   },
 });
 

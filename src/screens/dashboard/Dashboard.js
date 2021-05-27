@@ -104,9 +104,20 @@ const MonthlyContainer = ({
   </>
 );
 
+const DashbordPicker = ({ selectedValue }) => (
+  <Picker
+    mode="dialog"
+    selectedValue={selectedValue}
+    style={styles.picker}
+    onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+  >
+    <Picker.Item label="Select A Biller" value="java" />
+    <Picker.Item label="JavaScript" value="js" />
+  </Picker>
+);
+
 const Dashboard = () => {
-  const { categoryData } = DashboardLogic();
-  const [selectedValue, setSelectedValue] = useState("java");
+  const { categoryData, selectedValue } = DashboardLogic();
 
   const renderItem = ({ item }) => <CategoryItem title={item.title} />;
 
@@ -128,45 +139,11 @@ const Dashboard = () => {
         </Right>
       </Header>
       <View style={styles.searchView}>
-        <Text
-          style={{
-            flex: 0.5,
-            fontSize: 20,
-            color: WHITE,
-          }}
-        >
-          Welcome Oparannnnnnn!
-        </Text>
-        <View
-          style={{
-            flex: 1,
-            flexDirection: "row",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-          }}
-        >
+        <Text style={styles.welcomeText}>Welcome Opara!</Text>
+        <View style={styles.pickerContainer}>
           <Text style={{ color: WHITE }}>Total Summary</Text>
-          <View
-            style={{
-              alignItems: "flex-end",
-              top: -50,
-            }}
-          >
-            <Picker
-              mode="dialog"
-              selectedValue={selectedValue}
-              style={{
-                height: 10,
-                width: 150,
-                color: "#fff",
-              }}
-              onValueChange={(itemValue, itemIndex) =>
-                setSelectedValue(itemValue)
-              }
-            >
-              <Picker.Item label="Select biller" value="java" />
-              <Picker.Item label="JavaScript" value="js" />
-            </Picker>
+          <View style={styles.pickerView}>
+            <DashbordPicker selectedValue={selectedValue} />
           </View>
         </View>
       </View>
@@ -227,18 +204,10 @@ const Dashboard = () => {
           </View>
         </View>
         <View style={styles.mdaText}>
-          <Text style={styles.categoryText}>Top Category</Text>
+          <Text style={styles.categoryText}>Weekly chart</Text>
           <Text style={styles.viewCategoryText}>see all</Text>
         </View>
-        <View style={styles.listMdaView}>
-          <FlatList
-            showsHorizontalScrollIndicator={false}
-            horizontal={true}
-            data={categoryData}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-          />
-        </View>
+        <View style={styles.listMdaView}>{/* flatlist */}</View>
       </Content>
     </Container>
   );
