@@ -13,6 +13,8 @@ const styles = StyleSheet.create({
   searchView: {
     height: 170,
     backgroundColor: PRIMARYCOLOR,
+    paddingLeft: 15,
+    paddingRight: 15,
   },
   content: {
     top: -30,

@@ -10,8 +10,10 @@ import {
   Icon,
   Text,
   View,
+  Picker,
+  Form,
 } from "native-base";
-import React from "react";
+import React, { useState } from "react";
 import { FlatList } from "react-native-gesture-handler";
 import BagdeIcon from "../../components/BagdeIcon";
 import DisplayNumberFormat from "../../components/DisplayNumberFormat";
@@ -104,6 +106,7 @@ const MonthlyContainer = ({
 
 const Dashboard = () => {
   const { categoryData } = DashboardLogic();
+  const [selectedValue, setSelectedValue] = useState("java");
 
   const renderItem = ({ item }) => <CategoryItem title={item.title} />;
 
@@ -118,9 +121,55 @@ const Dashboard = () => {
         <Body>
           <Title>Dashboard</Title>
         </Body>
-        <Right />
+        <Right>
+          <Button transparent>
+            <Icon type="MaterialIcons" name="more-vert" />
+          </Button>
+        </Right>
       </Header>
-      <View style={styles.searchView}></View>
+      <View style={styles.searchView}>
+        <Text
+          style={{
+            flex: 0.5,
+            fontSize: 20,
+            color: WHITE,
+          }}
+        >
+          Welcome Oparannnnnnn!
+        </Text>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+          }}
+        >
+          <Text style={{ color: WHITE }}>Total Summary</Text>
+          <View
+            style={{
+              alignItems: "flex-end",
+              top: -50,
+            }}
+          >
+            <Picker
+              mode="dialog"
+              selectedValue={selectedValue}
+              style={{
+                height: 10,
+                width: 150,
+                color: "#fff",
+              }}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedValue(itemValue)
+              }
+            >
+              <Picker.Item label="Select biller" value="java" />
+              <Picker.Item label="JavaScript" value="js" />
+            </Picker>
+          </View>
+        </View>
+      </View>
       <View style={styles.todayAmountView}>
         <View style={styles.todayAmountContainer}>
           <BagdeIcon
