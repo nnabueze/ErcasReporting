@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import TabNavigator from "./src/navigators/TabNavigator";
 import * as Font from "expo-font";
+import StackNavigator from "./src/navigators/StackNavigator";
 
 export default function App() {
   useEffect(() => {
@@ -14,7 +15,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <TabNavigator></TabNavigator>
+      <StackNavigator />
     </NavigationContainer>
   );
 }

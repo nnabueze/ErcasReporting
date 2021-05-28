@@ -62,7 +62,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Collect"
-        component={Login}
+        component={Remittance}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tarbarIcon}>
