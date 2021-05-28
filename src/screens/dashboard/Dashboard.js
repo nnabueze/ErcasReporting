@@ -18,6 +18,7 @@ import BagdeIcon from "../../components/BagdeIcon";
 import DashbordPicker from "../../components/DashbordPicker";
 import DisplayLineChart from "../../components/DisplayLineChart";
 import DisplayNumberFormat from "../../components/DisplayNumberFormat";
+import NativeBasePicker from "../../components/NativeBasePicker";
 import {
   BADGECOLORONE,
   BADGECOLORTWO,
@@ -131,6 +132,7 @@ const Dashboard = () => {
           <Text style={{ color: WHITE }}>Total Summary</Text>
           <View style={styles.pickerView}>
             <DashbordPicker />
+            {/* <NativeBasePicker /> */}
           </View>
         </View>
       </View>

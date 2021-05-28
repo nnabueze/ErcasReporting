@@ -13,6 +13,7 @@ import {
   TARBARTINITCOLOR,
   WHITE,
 } from "../Contants";
+import Login from "../screens/login/Login";
 
 const Tab = createBottomTabNavigator();
 
@@ -61,7 +62,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Collect"
-        component={Remittance}
+        component={Login}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tarbarIcon}>
