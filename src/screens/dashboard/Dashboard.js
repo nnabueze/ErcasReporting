@@ -14,6 +14,7 @@ import {
   Form,
 } from "native-base";
 import React, { useState } from "react";
+import { StatusBar } from "react-native";
 import BagdeIcon from "../../components/BagdeIcon";
 import DashbordPicker from "../../components/DashbordPicker";
 import DisplayLineChart from "../../components/DisplayLineChart";
@@ -112,6 +113,7 @@ const Dashboard = () => {
   return (
     <Container>
       <Header androidStatusBarColor={PRIMARYCOLOR} style={styles.header}>
+        <StatusBar hidden={false} />
         <Left>
           <Button transparent>
             <Icon name="menu" />

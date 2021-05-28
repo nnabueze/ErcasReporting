@@ -14,6 +14,7 @@ import {
   WHITE,
 } from "../Contants";
 import Login from "../screens/login/Login";
+import Verify from "../screens/verify/Verify";
 
 const Tab = createBottomTabNavigator();
 
@@ -23,7 +24,7 @@ const CustomTabBarButtom = ({ children, onPress }) => (
   </TouchableOpacity>
 );
 
-const TabNavigator = () => {
+const TabNavigator = ({ children }) => {
   return (
     <Tab.Navigator
       tabBarOptions={{
@@ -62,7 +63,7 @@ const TabNavigator = () => {
       />
       <Tab.Screen
         name="Collect"
-        component={Remittance}
+        component={Verify}
         options={{
           tabBarIcon: ({ focused }) => (
             <View style={styles.tarbarIcon}>

@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Container,
   Header,
@@ -18,9 +19,8 @@ import {
   heightPercentageToDP as hp,
 } from "react-native-responsive-screen";
 import { Image, StatusBar } from "react-native";
-import React from "react";
 
-const Remittance = () => {
+const Verify = () => {
   return (
     <Container>
       <Header
@@ -35,7 +35,7 @@ const Remittance = () => {
           </Button>
         </Left>
         <Body>
-          <Title>Collection</Title>
+          <Title>Verify</Title>
         </Body>
         <Right>
           <Button transparent>
@@ -46,13 +46,13 @@ const Remittance = () => {
       <Content padder>
         <View style={{ height: hp("20%") }}>
           <Text>
-            This page enable agents to do cash collection on the
-            platform....coming up soon.
+            This page is to verify transaction and also clear any pending
+            remittance...coming up soon.
           </Text>
         </View>
         <View style={{ height: hp("60%") }}>
           <Image
-            source={require(`../../../assets/img/illustration-4.png`)}
+            source={require(`../../../assets/img/illustration-3.png`)}
             resizeMode="contain"
             style={{ height: "100%", width: "100%" }}
           />
@@ -62,4 +62,4 @@ const Remittance = () => {
   );
 };
 
-export default Remittance;
+export default Verify;
