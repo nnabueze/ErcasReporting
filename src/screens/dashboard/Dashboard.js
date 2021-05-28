@@ -112,7 +112,7 @@ const DashbordPicker = ({ selectedValue }) => (
     style={styles.picker}
     onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
   >
-    <Picker.Item label="Select A Biller" value="java" />
+    <Picker.Item label="Select Biller" value="java" />
     <Picker.Item label="JavaScript" value="js" />
   </Picker>
 );

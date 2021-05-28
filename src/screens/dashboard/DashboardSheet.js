@@ -145,7 +145,7 @@ const styles = StyleSheet.create({
   },
   pickerView: {
     alignItems: "flex-end",
-    top: -50,
+    top: -35,
   },
 });
 

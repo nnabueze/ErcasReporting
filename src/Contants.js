@@ -1,15 +1,3 @@
-export const DATA = {
-  labels: ["January", "February", "March", "April", "May", "June"],
-  datasets: [
-    {
-      data: [20, 45, 28, 80, 99, 43],
-      color: (opacity = 1) => `rgba(134, 65, 244, ${opacity})`, // optional
-      strokeWidth: 2, // optional
-    },
-  ],
-  legend: ["Rainy Days"], // optional
-};
-
 export const PRIMARYCOLOR = "#1a237e";
 export const PRIMARYCOLORLIGHT = "#534bae";
 export const SECONDARYCOLOR = "#ff9100";

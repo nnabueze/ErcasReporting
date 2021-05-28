@@ -2,8 +2,6 @@ import React, { useState } from "react";
 import { Dimensions } from "react-native";
 import { LineChart } from "react-native-chart-kit";
 
-import { DATA } from "../Contants";
-
 const DisplayLineChart = () => {
   const screenWidth = Dimensions.get("window").width;
 
@@ -16,7 +14,7 @@ const DisplayLineChart = () => {
         strokeWidth: 2, // optional
       },
     ],
-    legend: ["Rainy Days"], // optional
+    legend: ["Last 7days progress collection"], // optional
   };
 
   return (
