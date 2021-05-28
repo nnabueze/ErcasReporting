@@ -147,6 +147,7 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
     top: -35,
   },
+  displayLineChartContainer: { alignItems: "center" },
 });
 
 export default styles;

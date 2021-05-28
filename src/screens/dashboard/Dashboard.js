@@ -14,8 +14,8 @@ import {
   Form,
 } from "native-base";
 import React, { useState } from "react";
-import { FlatList } from "react-native-gesture-handler";
 import BagdeIcon from "../../components/BagdeIcon";
+import DashbordPicker from "../../components/DashbordPicker";
 import DisplayLineChart from "../../components/DisplayLineChart";
 import DisplayNumberFormat from "../../components/DisplayNumberFormat";
 import {
@@ -105,21 +105,7 @@ const MonthlyContainer = ({
   </>
 );
 
-const DashbordPicker = ({ selectedValue }) => (
-  <Picker
-    mode="dialog"
-    selectedValue={selectedValue}
-    style={styles.picker}
-    onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
-  >
-    <Picker.Item label="Select Biller" value="java" />
-    <Picker.Item label="JavaScript" value="js" />
-  </Picker>
-);
-
 const Dashboard = () => {
-  const { categoryData, selectedValue } = DashboardLogic();
-
   const renderItem = ({ item }) => <CategoryItem title={item.title} />;
 
   return (
@@ -144,7 +130,7 @@ const Dashboard = () => {
         <View style={styles.pickerContainer}>
           <Text style={{ color: WHITE }}>Total Summary</Text>
           <View style={styles.pickerView}>
-            <DashbordPicker selectedValue={selectedValue} />
+            <DashbordPicker />
           </View>
         </View>
       </View>
@@ -209,7 +195,7 @@ const Dashboard = () => {
           <Text style={styles.viewCategoryText}>see all</Text>
         </View>
         <View style={styles.listMdaView}>
-          <View style={{ alignItems: "center" }}>
+          <View style={styles.displayLineChartContainer}>
             <DisplayLineChart />
           </View>
         </View>
