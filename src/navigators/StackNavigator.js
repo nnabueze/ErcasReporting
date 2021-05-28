@@ -16,7 +16,13 @@ const StackNavigator = () => {
           headerShown: false,
         }}
       />
-      <Stack.Screen name="Home" component={TabNavigator} />
+      <Stack.Screen
+        name="Home"
+        component={TabNavigator}
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack.Navigator>
   );
 };

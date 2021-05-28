@@ -8,6 +8,7 @@ import {
   TouchableWithoutFeedback,
   View,
 } from "react-native";
+import LoginLogic from "./LoginLogic";
 
 import loginStyles from "./LoginSheet";
 
@@ -17,7 +18,9 @@ const DismissKeyboard = ({ children }) => (
   </TouchableWithoutFeedback>
 );
 
-const Login = () => {
+const Login = ({ navigation }) => {
+  const { onLoginClick } = LoginLogic(navigation);
+
   return (
     <DismissKeyboard>
       <View style={loginStyles.container}>
@@ -53,7 +56,10 @@ const Login = () => {
                 <Input />
                 <Icon active name="visibility" type="MaterialIcons" />
               </Item>
-              <Button style={loginStyles.loginButton}>
+              <Button
+                style={loginStyles.loginButton}
+                onPress={() => onLoginClick()}
+              >
                 <Text>Login</Text>
               </Button>
             </Form>
