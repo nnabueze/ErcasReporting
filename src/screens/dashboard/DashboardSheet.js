@@ -11,7 +11,7 @@ import {
 
 const styles = StyleSheet.create({
   searchView: {
-    height: 170,
+    height: 150,
     backgroundColor: PRIMARYCOLOR,
     paddingLeft: 15,
     paddingRight: 15,
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   listMdaView: {
-    height: 150,
+    height: 250,
     borderRadius: 10,
     backgroundColor: WHITE,
     ...ScreenStyle.boxShadow,

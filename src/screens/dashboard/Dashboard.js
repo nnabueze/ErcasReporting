@@ -16,6 +16,7 @@ import {
 import React, { useState } from "react";
 import { FlatList } from "react-native-gesture-handler";
 import BagdeIcon from "../../components/BagdeIcon";
+import DisplayLineChart from "../../components/DisplayLineChart";
 import DisplayNumberFormat from "../../components/DisplayNumberFormat";
 import {
   BADGECOLORONE,
@@ -207,7 +208,11 @@ const Dashboard = () => {
           <Text style={styles.categoryText}>Weekly chart</Text>
           <Text style={styles.viewCategoryText}>see all</Text>
         </View>
-        <View style={styles.listMdaView}>{/* flatlist */}</View>
+        <View style={styles.listMdaView}>
+          <View style={{ alignItems: "center" }}>
+            <DisplayLineChart />
+          </View>
+        </View>
       </Content>
     </Container>
   );
