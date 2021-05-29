@@ -12,3 +12,6 @@ export const GRAY = "#efefef";
 export const BLACK = "#000";
 export const INDICATORCOLORONE = "#629749";
 export const INDICATORCOLORTWO = "#ff5f52";
+
+export const BASE_URL = "";
+export const LOGIN_URL = `${BASE_URL}/`;
