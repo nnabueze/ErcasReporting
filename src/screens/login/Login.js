@@ -19,7 +19,8 @@ const DismissKeyboard = ({ children }) => (
 );
 
 const Login = ({ navigation }) => {
-  const { onLoginClick } = LoginLogic(navigation);
+  const { onLoginClick, email, setEmail, password, setPassword } =
+    LoginLogic(navigation);
 
   return (
     <DismissKeyboard>
@@ -48,17 +49,21 @@ const Login = ({ navigation }) => {
             <Form>
               <Item style={loginStyles.textBox} floatingLabel last>
                 <Label>Username</Label>
-                <Input />
+                <Input value={email} onChangeText={(text) => setEmail(text)} />
                 <Icon active name="person" />
               </Item>
               <Item style={loginStyles.textBox} floatingLabel last>
                 <Label>Password</Label>
-                <Input />
+                <Input
+                  value={password}
+                  onChangeText={(text) => setPassword(text)}
+                  secureTextEntry={true}
+                />
                 <Icon active name="visibility" type="MaterialIcons" />
               </Item>
               <Button
                 style={loginStyles.loginButton}
-                onPress={() => onLoginClick()}
+                onPress={() => onLoginClick(email, password)}
               >
                 <Text>Login</Text>
               </Button>

@@ -32,6 +32,7 @@ import {
   TARBARICONBACKGROUND,
   WHITE,
 } from "../../Contants";
+import LoginLogic from "../login/LoginLogic";
 
 import DashboardLogic from "./DashboardLogic";
 import styles from "./DashboardSheet";
@@ -108,8 +109,7 @@ const MonthlyContainer = ({
 );
 
 const Dashboard = () => {
-  const renderItem = ({ item }) => <CategoryItem title={item.title} />;
-
+  const { onLogout } = DashboardLogic();
   return (
     <Container>
       <Header androidStatusBarColor={PRIMARYCOLOR} style={styles.header}>
@@ -123,7 +123,7 @@ const Dashboard = () => {
           <Title>Dashboard</Title>
         </Body>
         <Right>
-          <Button transparent>
+          <Button transparent onPress={onLogout}>
             <Icon type="MaterialIcons" name="more-vert" />
           </Button>
         </Right>

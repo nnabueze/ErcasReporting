@@ -13,5 +13,8 @@ export const BLACK = "#000";
 export const INDICATORCOLORONE = "#629749";
 export const INDICATORCOLORTWO = "#ff5f52";
 
-export const BASE_URL = "";
-export const LOGIN_URL = `${BASE_URL}/`;
+export const BASE_URL = "http://69.64.74.108:8011";
+export const LOGIN_URL = `${BASE_URL}/api/MobileReport/AppLogin`;
+
+export const LOGIN = "login";
+export const LOGOUT = "logout";
