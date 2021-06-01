@@ -1,6 +1,8 @@
 import { Button, Form, Icon, Input, Item, Label, Text } from "native-base";
 import React from "react";
+import Spinner from "react-native-loading-spinner-overlay";
 import {
+  ActivityIndicator,
   Image,
   Keyboard,
   StatusBar,
@@ -19,8 +21,17 @@ const DismissKeyboard = ({ children }) => (
 );
 
 const Login = ({ navigation }) => {
-  const { onLoginClick, email, setEmail, password, setPassword } =
-    LoginLogic(navigation);
+  const {
+    onLoginClick,
+    email,
+    setEmail,
+    password,
+    setPassword,
+    displayAlert,
+    displaySpinner,
+    displayAlertMessage,
+    simpleAlert,
+  } = LoginLogic(navigation);
 
   return (
     <DismissKeyboard>
@@ -46,6 +57,15 @@ const Login = ({ navigation }) => {
             </View>
           </View>
           <View style={loginStyles.box2}>
+            {displaySpinner && (
+              <Spinner
+                visible={displaySpinner}
+                textContent={"Loading..."}
+                textStyle={{ color: "#fff" }}
+                overlayColor="rgba(0, 0, 0, 0.7)"
+              />
+            )}
+            {displayAlert && simpleAlert(displayAlertMessage)}
             <Form>
               <Item style={loginStyles.textBox} floatingLabel last>
                 <Label>Username</Label>
@@ -75,5 +95,18 @@ const Login = ({ navigation }) => {
     </DismissKeyboard>
   );
 };
+
+const styles = StyleSheet.create({
+  loading: {
+    backgroundColor: "black",
+    position: "absolute",
+    left: 0,
+    right: 0,
+    top: 0,
+    bottom: 0,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 
 export default Login;
