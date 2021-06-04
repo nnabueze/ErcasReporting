@@ -14,7 +14,7 @@ import {
   Form,
 } from "native-base";
 import React, { useState } from "react";
-import { StatusBar } from "react-native";
+import { RefreshControl, StatusBar } from "react-native";
 import BagdeIcon from "../../components/BagdeIcon";
 import DashbordPicker from "../../components/DashbordPicker";
 import DisplayLineChart from "../../components/DisplayLineChart";
@@ -121,6 +121,8 @@ const Dashboard = () => {
     yesterdayAmount,
     errorMessage,
     isError,
+    onRefresh,
+    refereshing,
   } = DashboardLogic();
   return (
     <Container>
@@ -182,7 +184,22 @@ const Dashboard = () => {
           <Text style={styles.todayTextThree}>Today Summary</Text>
         </View>
       </View>
-      <Content padder style={styles.content}>
+      <Content
+        padder
+        style={styles.content}
+        refreshControl={
+          <RefreshControl
+            style={{ backgroundColor: "#E0FFFF" }}
+            refreshing={refereshing}
+            onRefresh={onRefresh}
+            tintColor="#ff0000"
+            title="Loading..."
+            titleColor="#000"
+            colors={["#ff0000", "#00ff00", "#0000ff"]}
+            progressBackgroundColor="#efefef"
+          />
+        }
+      >
         <View style={styles.remitContainer}>
           <View style={styles.remite}>
             <MonthlyContainer
@@ -203,7 +220,7 @@ const Dashboard = () => {
               indicatorAmount={20}
               indicatorColor={INDICATORCOLORTWO}
               indicatorIcon="arrow-down"
-              title="Cash At Hand"
+              title="Monthly Cash At Hand"
             />
           </View>
         </View>

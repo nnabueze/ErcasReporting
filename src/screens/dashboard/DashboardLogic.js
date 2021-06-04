@@ -20,6 +20,7 @@ const DashboardLogic = () => {
   const [cashAtHand, setcashAtHand] = useState(0);
   const [errorMessage, setErrorMessage] = useState("");
   const [isError, setIsError] = useState(false);
+  const [refereshing, setRefereshing] = useState(false);
 
   useEffect(() => {
     callDashboardService();
@@ -30,19 +31,27 @@ const DashboardLogic = () => {
       .then((result) => {
         if (result.data.Status === "success") {
           setIsError(false);
+          setRefereshing(false);
           setTodayAmount(result.data.TodayAmount);
           setYesterdayAmount(result.data.YesterdayAmount);
           setMonthlyAmount(result.data.MonthlyAmount);
           setcashAtHand(result.data.MonthlyCashAtHand);
         } else {
           setIsError(true);
+          setRefereshing(false);
           setErrorMessage(result.data.Message);
         }
       })
       .catch((err) => {
         setIsError(true);
+        setRefereshing(false);
         setErrorMessage(err.response.data.Message);
       });
+  };
+
+  const onRefresh = () => {
+    setRefereshing(true);
+    callDashboardService();
   };
 
   const capitalize = (str) => {
@@ -70,6 +79,8 @@ const DashboardLogic = () => {
     cashAtHand,
     isError,
     errorMessage,
+    onRefresh,
+    refereshing,
   };
 };
 
