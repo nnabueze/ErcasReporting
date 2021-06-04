@@ -125,6 +125,7 @@ const Dashboard = () => {
     refereshing,
     onPickerChange,
     selectedValue,
+    allBillers,
   } = DashboardLogic();
   return (
     <Container>
@@ -153,6 +154,7 @@ const Dashboard = () => {
               <DashbordPicker
                 onPickerChange={onPickerChange}
                 selectedValue={selectedValue}
+                billers={allBillers}
               />
             )}
 

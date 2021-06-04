@@ -17,7 +17,7 @@ import {
 
 import styles from "../screens/dashboard/DashboardSheet";
 
-const DashbordPicker = ({ onPickerChange, selectedValue }) => {
+const DashbordPicker = ({ onPickerChange, selectedValue, billers }) => {
   return (
     <Picker
       mode="dialog"
@@ -25,8 +25,10 @@ const DashbordPicker = ({ onPickerChange, selectedValue }) => {
       style={styles.picker}
       onValueChange={(itemValue, itemIndex) => onPickerChange(itemValue)}
     >
-      <Picker.Item label="Select Biller" value="java" />
-      <Picker.Item label="JavaScript" value="js" />
+      <Picker.Item label="Select Biller" value="" />
+      {billers.map((item, index) => (
+        <Picker.Item key={index} label={item.IGR_Name} value={item.IGR_Code} />
+      ))}
     </Picker>
   );
 };

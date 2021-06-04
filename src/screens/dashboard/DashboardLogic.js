@@ -21,19 +21,21 @@ const DashboardLogic = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const [refereshing, setRefereshing] = useState(false);
-  const [selectedValue, setSelectedValue] = useState("java");
+  const [selectedValue, setSelectedValue] = useState("");
+  const [allBillers, setAllBillers] = useState([]);
 
   const onPickerChange = (itemValue) => {
     setSelectedValue(itemValue);
-    alert(itemValue);
+    callDashboardService(itemValue);
   };
 
   useEffect(() => {
-    callDashboardService();
+    callDashboardService(billerId);
   }, []);
 
-  const callDashboardService = () => {
-    DashboardService(billerId)
+  const callDashboardService = (billerKey) => {
+    console.log(billerKey);
+    DashboardService(billerKey)
       .then((result) => {
         if (result.data.Status === "success") {
           setIsError(false);
@@ -42,6 +44,7 @@ const DashboardLogic = () => {
           setYesterdayAmount(result.data.YesterdayAmount);
           setMonthlyAmount(result.data.MonthlyAmount);
           setcashAtHand(result.data.MonthlyCashAtHand);
+          setAllBillers([...result.data.billers]);
         } else {
           setIsError(true);
           setRefereshing(false);
@@ -57,7 +60,7 @@ const DashboardLogic = () => {
 
   const onRefresh = () => {
     setRefereshing(true);
-    callDashboardService();
+    callDashboardService(billerId);
   };
 
   const capitalize = (str) => {
@@ -89,6 +92,7 @@ const DashboardLogic = () => {
     refereshing,
     selectedValue,
     onPickerChange,
+    allBillers,
   };
 };
 
