@@ -20,6 +20,7 @@ import DashbordPicker from "../../components/DashbordPicker";
 import DisplayLineChart from "../../components/DisplayLineChart";
 import DisplayNumberFormat from "../../components/DisplayNumberFormat";
 import NativeBasePicker from "../../components/NativeBasePicker";
+import { ShowToast } from "../../components/ShowToast";
 import {
   BADGECOLORONE,
   BADGECOLORTWO,
@@ -118,6 +119,8 @@ const Dashboard = () => {
     todayAmount,
     monthlyAmount,
     yesterdayAmount,
+    errorMessage,
+    isError,
   } = DashboardLogic();
   return (
     <Container>
@@ -213,6 +216,7 @@ const Dashboard = () => {
             <DisplayLineChart />
           </View>
         </View>
+        {isError && ShowToast(errorMessage)}
       </Content>
     </Container>
   );

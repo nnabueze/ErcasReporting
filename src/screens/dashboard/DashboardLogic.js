@@ -1,6 +1,7 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
+import { set } from "react-native-reanimated";
 import { Logout } from "../../actions/Action";
 import { DATA } from "../../Contants";
 import { CredentialsContext } from "../../context/AuthContext";
@@ -17,22 +18,32 @@ const DashboardLogic = () => {
   const [yesterdayAmount, setYesterdayAmount] = useState(0);
   const [monthlyAmount, setMonthlyAmount] = useState(0);
   const [cashAtHand, setcashAtHand] = useState(0);
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
+    callDashboardService();
+  }, []);
+
+  const callDashboardService = () => {
     DashboardService(billerId)
       .then((result) => {
         if (result.data.Status === "success") {
+          setIsError(false);
           setTodayAmount(result.data.TodayAmount);
           setYesterdayAmount(result.data.YesterdayAmount);
           setMonthlyAmount(result.data.MonthlyAmount);
           setcashAtHand(result.data.MonthlyCashAtHand);
         } else {
-          setError(result.data.Message);
+          setIsError(true);
+          setErrorMessage(result.data.Message);
         }
       })
-      .catch((err) => console.log(err));
-  }, []);
+      .catch((err) => {
+        setIsError(true);
+        setErrorMessage(err.response.data.Message);
+      });
+  };
 
   const capitalize = (str) => {
     var nameLetter = str.toLowerCase();
@@ -46,6 +57,7 @@ const DashboardLogic = () => {
       })
       .catch((error) => console.log(error));
   };
+
   return {
     onLogout,
     billerName,
@@ -56,6 +68,8 @@ const DashboardLogic = () => {
     yesterdayAmount,
     monthlyAmount,
     cashAtHand,
+    isError,
+    errorMessage,
   };
 };
 
