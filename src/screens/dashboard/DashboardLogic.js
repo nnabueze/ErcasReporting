@@ -21,6 +21,12 @@ const DashboardLogic = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isError, setIsError] = useState(false);
   const [refereshing, setRefereshing] = useState(false);
+  const [selectedValue, setSelectedValue] = useState("java");
+
+  const onPickerChange = (itemValue) => {
+    setSelectedValue(itemValue);
+    alert(itemValue);
+  };
 
   useEffect(() => {
     callDashboardService();
@@ -81,6 +87,8 @@ const DashboardLogic = () => {
     errorMessage,
     onRefresh,
     refereshing,
+    selectedValue,
+    onPickerChange,
   };
 };
 

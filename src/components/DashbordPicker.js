@@ -17,14 +17,13 @@ import {
 
 import styles from "../screens/dashboard/DashboardSheet";
 
-const DashbordPicker = () => {
-  const [selectedValue, setSelectedValue] = useState("java");
+const DashbordPicker = ({ onPickerChange, selectedValue }) => {
   return (
     <Picker
       mode="dialog"
       selectedValue={selectedValue}
       style={styles.picker}
-      onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
+      onValueChange={(itemValue, itemIndex) => onPickerChange(itemValue)}
     >
       <Picker.Item label="Select Biller" value="java" />
       <Picker.Item label="JavaScript" value="js" />

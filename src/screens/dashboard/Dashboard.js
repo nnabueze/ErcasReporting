@@ -123,6 +123,8 @@ const Dashboard = () => {
     isError,
     onRefresh,
     refereshing,
+    onPickerChange,
+    selectedValue,
   } = DashboardLogic();
   return (
     <Container>
@@ -147,7 +149,12 @@ const Dashboard = () => {
         <View style={styles.pickerContainer}>
           <Text style={{ color: WHITE }}>{capitalize(billerName)} Summary</Text>
           <View style={styles.pickerView}>
-            {role === "SuperAdmin" && <DashbordPicker />}
+            {role === "SuperAdmin" && (
+              <DashbordPicker
+                onPickerChange={onPickerChange}
+                selectedValue={selectedValue}
+              />
+            )}
 
             {/* <NativeBasePicker /> */}
           </View>
