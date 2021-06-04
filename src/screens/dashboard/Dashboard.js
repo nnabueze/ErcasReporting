@@ -15,6 +15,7 @@ import {
 } from "native-base";
 import React, { useState } from "react";
 import { RefreshControl, StatusBar } from "react-native";
+import Spinner from "react-native-loading-spinner-overlay";
 import BagdeIcon from "../../components/BagdeIcon";
 import DashbordPicker from "../../components/DashbordPicker";
 import DisplayLineChart from "../../components/DisplayLineChart";
@@ -126,6 +127,7 @@ const Dashboard = () => {
     onPickerChange,
     selectedValue,
     allBillers,
+    displaySpinner,
   } = DashboardLogic();
   return (
     <Container>
@@ -209,6 +211,14 @@ const Dashboard = () => {
           />
         }
       >
+        {displaySpinner && (
+          <Spinner
+            visible={displaySpinner}
+            textContent={"Loading..."}
+            textStyle={{ color: "#fff" }}
+            overlayColor="rgba(0, 0, 0, 0.7)"
+          />
+        )}
         <View style={styles.remitContainer}>
           <View style={styles.remite}>
             <MonthlyContainer

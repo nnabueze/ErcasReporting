@@ -23,10 +23,15 @@ const DashboardLogic = () => {
   const [refereshing, setRefereshing] = useState(false);
   const [selectedValue, setSelectedValue] = useState("");
   const [allBillers, setAllBillers] = useState([]);
+  const [displaySpinner, setDisplaySpinner] = useState(false);
 
   const onPickerChange = (itemValue) => {
-    setSelectedValue(itemValue);
-    callDashboardService(itemValue);
+    setIsError(false);
+    if (itemValue !== "") {
+      setSelectedValue(itemValue);
+      setBillerId(itemValue);
+      callDashboardService(itemValue);
+    }
   };
 
   useEffect(() => {
@@ -34,12 +39,45 @@ const DashboardLogic = () => {
   }, []);
 
   const callDashboardService = (billerKey) => {
-    console.log(billerKey);
+    setDisplaySpinner(true);
+    setIsError(false);
     DashboardService(billerKey)
       .then((result) => {
         if (result.data.Status === "success") {
           setIsError(false);
           setRefereshing(false);
+          setDisplaySpinner(false);
+          setBillerName(result.data.BillerName);
+          setTodayAmount(result.data.TodayAmount);
+          setYesterdayAmount(result.data.YesterdayAmount);
+          setMonthlyAmount(result.data.MonthlyAmount);
+          setcashAtHand(result.data.MonthlyCashAtHand);
+          setAllBillers([...result.data.billers]);
+        } else {
+          setIsError(true);
+          setRefereshing(false);
+          setDisplaySpinner(false);
+          setErrorMessage(result.data.Message);
+        }
+      })
+      .catch((err) => {
+        setIsError(true);
+        setRefereshing(false);
+        setDisplaySpinner(false);
+        setErrorMessage(err.response.data.Message);
+      });
+  };
+
+  const onRefresh = () => {
+    setRefereshing(true);
+    setDisplaySpinner(false);
+    setIsError(false);
+    DashboardService(billerId)
+      .then((result) => {
+        if (result.data.Status === "success") {
+          setIsError(false);
+          setRefereshing(false);
+          setBillerName(result.data.BillerName);
           setTodayAmount(result.data.TodayAmount);
           setYesterdayAmount(result.data.YesterdayAmount);
           setMonthlyAmount(result.data.MonthlyAmount);
@@ -56,11 +94,6 @@ const DashboardLogic = () => {
         setRefereshing(false);
         setErrorMessage(err.response.data.Message);
       });
-  };
-
-  const onRefresh = () => {
-    setRefereshing(true);
-    callDashboardService(billerId);
   };
 
   const capitalize = (str) => {
@@ -93,6 +126,7 @@ const DashboardLogic = () => {
     selectedValue,
     onPickerChange,
     allBillers,
+    displaySpinner,
   };
 };
 
