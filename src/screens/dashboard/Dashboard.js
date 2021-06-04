@@ -32,7 +32,6 @@ import {
   TARBARICONBACKGROUND,
   WHITE,
 } from "../../Contants";
-import LoginLogic from "../login/LoginLogic";
 
 import DashboardLogic from "./DashboardLogic";
 import styles from "./DashboardSheet";
@@ -109,7 +108,17 @@ const MonthlyContainer = ({
 );
 
 const Dashboard = () => {
-  const { onLogout } = DashboardLogic();
+  const {
+    onLogout,
+    billerName,
+    role,
+    userName,
+    capitalize,
+    cashAtHand,
+    todayAmount,
+    monthlyAmount,
+    yesterdayAmount,
+  } = DashboardLogic();
   return (
     <Container>
       <Header androidStatusBarColor={PRIMARYCOLOR} style={styles.header}>
@@ -129,11 +138,12 @@ const Dashboard = () => {
         </Right>
       </Header>
       <View style={styles.searchView}>
-        <Text style={styles.welcomeText}>Welcome Opara!</Text>
+        <Text style={styles.welcomeText}>Welcome {capitalize(userName)}!</Text>
         <View style={styles.pickerContainer}>
-          <Text style={{ color: WHITE }}>Total Summary</Text>
+          <Text style={{ color: WHITE }}>{capitalize(billerName)} Summary</Text>
           <View style={styles.pickerView}>
-            <DashbordPicker />
+            {role === "SuperAdmin" && <DashbordPicker />}
+
             {/* <NativeBasePicker /> */}
           </View>
         </View>
@@ -152,7 +162,7 @@ const Dashboard = () => {
             viewWidth={35}
           />
           <DisplayNumberFormat
-            value={100000000}
+            value={todayAmount}
             textStyle={styles.todayAmountText}
           />
         </View>
@@ -173,10 +183,10 @@ const Dashboard = () => {
         <View style={styles.remitContainer}>
           <View style={styles.remite}>
             <MonthlyContainer
-              amount={20000000}
+              amount={monthlyAmount}
               badgeColor={BADGECOLORONE}
               icon="chart-three"
-              indicatorAmount={30.5}
+              indicatorAmount={9}
               indicatorColor={INDICATORCOLORONE}
               indicatorIcon="arrow-up"
               title="Monthly Summary"
@@ -184,10 +194,10 @@ const Dashboard = () => {
           </View>
           <View style={styles.remite}>
             <MonthlyContainer
-              amount={1000}
+              amount={cashAtHand}
               badgeColor={INDICATORCOLORTWO}
               icon="chart-two"
-              indicatorAmount={20.5}
+              indicatorAmount={20}
               indicatorColor={INDICATORCOLORTWO}
               indicatorIcon="arrow-down"
               title="Cash At Hand"

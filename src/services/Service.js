@@ -1,5 +1,5 @@
 import * as axios from "axios";
-import { LOGIN_URL } from "../Contants";
+import { DASHBOARD_URL, LOGIN_URL } from "../Contants";
 
 export const LoginService = async (payload) => {
   try {
@@ -12,6 +12,14 @@ export const LoginService = async (payload) => {
   } catch (e) {
     throw handler(e);
   }
+};
+
+export const DashboardService = (payload) => {
+  const formData = {
+    BillerId: payload,
+  };
+
+  return axios.post(DASHBOARD_URL, formData);
 };
 
 export const handler = (err) => {
