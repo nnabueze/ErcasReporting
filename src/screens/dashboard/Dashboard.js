@@ -124,7 +124,7 @@ const Dashboard = () => {
         </Body>
         <Right>
           <Button transparent onPress={onLogout}>
-            <Icon type="MaterialIcons" name="more-vert" />
+            <Icon type="MaterialIcons" name="logout" />
           </Button>
         </Right>
       </Header>
