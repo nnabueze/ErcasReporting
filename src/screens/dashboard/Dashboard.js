@@ -128,13 +128,14 @@ const Dashboard = () => {
     selectedValue,
     allBillers,
     displaySpinner,
+    onDashboardMenuClick,
   } = DashboardLogic();
   return (
     <Container>
       <Header androidStatusBarColor={PRIMARYCOLOR} style={styles.header}>
         <StatusBar hidden={false} />
         <Left>
-          <Button transparent>
+          <Button transparent onPress={onDashboardMenuClick}>
             <Icon name="menu" />
           </Button>
         </Left>

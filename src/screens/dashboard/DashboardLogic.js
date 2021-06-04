@@ -25,6 +25,15 @@ const DashboardLogic = () => {
   const [allBillers, setAllBillers] = useState([]);
   const [displaySpinner, setDisplaySpinner] = useState(false);
 
+  useEffect(() => {
+    callDashboardService(billerId);
+  }, []);
+
+  const onDashboardMenuClick = () => {
+    setIsError(true);
+    setErrorMessage("Not active");
+  };
+
   const onPickerChange = (itemValue) => {
     setIsError(false);
     if (itemValue !== "") {
@@ -33,10 +42,6 @@ const DashboardLogic = () => {
       callDashboardService(itemValue);
     }
   };
-
-  useEffect(() => {
-    callDashboardService(billerId);
-  }, []);
 
   const callDashboardService = (billerKey) => {
     setDisplaySpinner(true);
@@ -127,6 +132,7 @@ const DashboardLogic = () => {
     onPickerChange,
     allBillers,
     displaySpinner,
+    onDashboardMenuClick,
   };
 };
 
