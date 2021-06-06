@@ -85,6 +85,50 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "stretch",
   },
+  yesterdayContainer: {
+    backgroundColor: GRAY,
+    height: 70,
+    marginLeft: 30,
+    marginRight: 30,
+    marginBottom: 15,
+    ...ScreenStyle.boxShadow,
+    borderRadius: 10,
+  },
+  yesterdayViewOne: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-end",
+    flexDirection: "row",
+    paddingLeft: 10,
+    paddingRight: 10,
+  },
+  yesterdayViewTwo: {
+    flex: 0.7,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  yesterdaySummary: {
+    fontSize: 13,
+    color: PRIMARYCOLORLIGHT,
+  },
+  yesterdayColumnOne: {
+    flex: 0.7,
+    paddingTop: 10,
+    alignItems: "center",
+  },
+  yesterdayColumnTwo: {
+    flex: 0.7,
+    paddingTop: 10,
+    alignItems: "center",
+  },
+  yesterdayColumnThree: {
+    flex: 1,
+    alignItems: "flex-end",
+  },
+  yesterdayAmount: {
+    fontSize: 17,
+    fontWeight: "bold",
+  },
   sectionView: {
     backgroundColor: WHITE,
     width: 150,

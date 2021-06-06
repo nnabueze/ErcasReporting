@@ -44,8 +44,8 @@ const DashboardLogic = () => {
   };
 
   const callDashboardService = (billerKey) => {
-    setDisplaySpinner(true);
     setIsError(false);
+    setDisplaySpinner(true);
     DashboardService(billerKey)
       .then((result) => {
         if (result.data.Status === "success") {
@@ -59,17 +59,17 @@ const DashboardLogic = () => {
           setcashAtHand(result.data.MonthlyCashAtHand);
           setAllBillers([...result.data.billers]);
         } else {
-          setIsError(true);
           setRefereshing(false);
           setDisplaySpinner(false);
-          setErrorMessage(result.data.Message);
+          setErrorMessage(result.data.message);
+          setIsError(true);
         }
       })
       .catch((err) => {
-        setIsError(true);
         setRefereshing(false);
         setDisplaySpinner(false);
-        setErrorMessage(err.response.data.Message);
+        setErrorMessage(err.response.data.message);
+        setIsError(true);
       });
   };
 

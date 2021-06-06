@@ -33,6 +33,9 @@ const BagdeIcon = ({
     case "chart-three":
       imagePath = require(`../../assets/img/chart-three.png`);
       break;
+    case "chart-four":
+      imagePath = require(`../../assets/img/chart-four.png`);
+      break;
     default:
       imagePath = require(`../../assets/img/payment.png`);
   }

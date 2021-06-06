@@ -8,6 +8,7 @@ export const TARBARICONBACKGROUND = "#efefef";
 export const GREEN = "#60ad5e";
 export const BADGECOLORONE = "#60ad5e";
 export const BADGECOLORTWO = "#fff263";
+export const BADGECOLORTHREE = "#827717";
 export const GRAY = "#efefef";
 export const BLACK = "#000";
 export const INDICATORCOLORONE = "#629749";

@@ -32,6 +32,7 @@ import {
   PRIMARYCOLOR,
   SECONDARYCOLOR,
   TARBARICONBACKGROUND,
+  BADGECOLORTHREE,
   WHITE,
 } from "../../Contants";
 
@@ -244,6 +245,44 @@ const Dashboard = () => {
             />
           </View>
         </View>
+        <View style={styles.yesterdayContainer}>
+          <View style={styles.yesterdayViewOne}>
+            <View style={styles.yesterdayColumnOne}>
+              <BagdeIcon
+                backgroundcolor={BADGECOLORTHREE}
+                imageHight={25}
+                imageWidth={20}
+                tintColor={WHITE}
+                paddingLeft={8}
+                radius={17}
+                icon="chart-four"
+                viewHight={35}
+                viewWidth={35}
+              />
+            </View>
+
+            <View style={styles.yesterdayColumnTwo}>
+              <Indicator
+                icon="arrow-up"
+                tintColor={GREEN}
+                textColor={GREEN}
+                backgroundColor={GREEN}
+                amount={20.4}
+              />
+            </View>
+
+            <View style={styles.yesterdayColumnThree}>
+              <DisplayNumberFormat
+                value={yesterdayAmount}
+                textStyle={styles.yesterdayAmount}
+              />
+            </View>
+          </View>
+          <View style={styles.yesterdayViewTwo}>
+            <Text style={styles.yesterdaySummary}>Yesterday Summary</Text>
+          </View>
+        </View>
+
         <View style={styles.mdaText}>
           <Text style={styles.categoryText}>Weekly chart</Text>
           <Text style={styles.viewCategoryText}>see all</Text>

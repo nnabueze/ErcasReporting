@@ -19,6 +19,8 @@ export const DashboardService = (payload) => {
     BillerId: payload,
   };
 
+  console.log(formData);
+
   return axios.post(DASHBOARD_URL, formData);
 };
 
