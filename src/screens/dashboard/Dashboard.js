@@ -156,9 +156,10 @@ const Dashboard = () => {
         </Right>
       </Header>
       <View style={styles.searchView}>
-        <Text style={styles.welcomeText}>Welcome {capitalize(userName)}!</Text>
+        <Text style={styles.welcomeText}>{capitalize(billerName)} Summary</Text>
         <View style={styles.pickerContainer}>
-          <Text style={{ color: WHITE }}>{capitalize(billerName)} Summary</Text>
+          <Text style={{ color: WHITE }}>Welcome {capitalize(userName)}!</Text>
+
           <View style={styles.pickerView}>
             {role === "SuperAdmin" && (
               <DashbordPicker

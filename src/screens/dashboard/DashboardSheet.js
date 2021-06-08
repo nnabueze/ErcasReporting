@@ -178,7 +178,7 @@ const styles = StyleSheet.create({
   },
   welcomeText: {
     flex: 0.5,
-    fontSize: 20,
+    fontSize: 19,
     color: WHITE,
   },
   pickerContainer: {
