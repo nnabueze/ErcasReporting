@@ -1,15 +1,14 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
 import { useContext } from "react";
-import { set } from "react-native-reanimated";
-import { Logout } from "../../actions/Action";
-import { DATA } from "../../Contants";
+import Logout from "../../components/Logout";
 import { CredentialsContext } from "../../context/AuthContext";
 import { DashboardService } from "../../services/Service";
 
 const DashboardLogic = () => {
   const { storedCredentials, setStoredCredentials } =
     useContext(CredentialsContext);
+  const { onLogout } = Logout();
   const [billerName, setBillerName] = useState(storedCredentials.billerName);
   const [billerId, setBillerId] = useState(storedCredentials.billerID);
   const [role, setRole] = useState(storedCredentials.role);
@@ -76,6 +75,11 @@ const DashboardLogic = () => {
           setDay4(result.data.Report.DayFour);
           setDay5(result.data.Report.DayFive);
           setDay6(result.data.Report.DaySix);
+          persistDashboard(
+            [...result.data.billers],
+            result.data.BillerName,
+            billerKey
+          );
         } else {
           setRefereshing(false);
           setDisplaySpinner(false);
@@ -112,6 +116,11 @@ const DashboardLogic = () => {
           setDay4(result.data.Report.DayFour);
           setDay5(result.data.Report.DayFive);
           setDay6(result.data.Report.DaySix);
+          persistDashboard(
+            [...result.data.billers],
+            result.data.BillerName,
+            billerId
+          );
         } else {
           setErrorMessage(result.data.message);
           setIsError(true);
@@ -130,15 +139,13 @@ const DashboardLogic = () => {
     return nameLetter.charAt(0).toUpperCase() + nameLetter.slice(1);
   };
 
-  const onLogout = () => {
-    AsyncStorage.removeItem("credentials")
-      .then(() => {
-        setStoredCredentials("");
-      })
-      .catch((error) => console.log(error));
-  };
-
-  const persistDashboard = (details) => {
+  const persistDashboard = (billers, billerName, billerId) => {
+    const details = {
+      billers: billers,
+      billerName: billerName,
+      billerId,
+      billerId,
+    };
     AsyncStorage.setItem("dashbaord", JSON.stringify(details))
       .then(() => {})
       .catch((error) => {

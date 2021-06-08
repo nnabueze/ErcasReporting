@@ -25,16 +25,17 @@ import {
 import { Dimensions, Image, StatusBar, StyleSheet } from "react-native";
 import DashbordPicker from "../../components/DashbordPicker";
 import VerifyLogic from "./VerifyLogic";
-
+import { PRIMARYCOLOR, WHITE } from "../../Contants";
+import Logout from "../../components/Logout";
 const { height, width } = Dimensions.get("window");
 
 const Verify = () => {
-  const { onPickerChange, selectedValue, allBillers, billerName } =
+  const { onPickerChange, selectedValue, allBillers, billerName, onLogout } =
     VerifyLogic();
 
   return (
     <Container style={styles.Container}>
-      <Header style={styles.header}>
+      <Header androidStatusBarColor={PRIMARYCOLOR} style={styles.header}>
         <StatusBar hidden={false} />
         <Left>
           <Button transparent>
@@ -45,13 +46,24 @@ const Verify = () => {
           <Title>Verify</Title>
         </Body>
         <Right>
-          <Button transparent>
-            <Icon type="MaterialIcons" name="more-vert" />
+          <Button transparent onPress={onLogout}>
+            <Icon type="MaterialIcons" name="logout" />
           </Button>
         </Right>
       </Header>
       <View style={styles.billerView}>
-        <Text style={styles.billerViewText}>BillerName</Text>
+        <View style={{ flex: 0.8 }}>
+          <Text style={styles.billerViewText}>{billerName}</Text>
+        </View>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "flex-end",
+          }}
+        >
+          <Text style={{ color: WHITE }}>Remittance Verification</Text>
+        </View>
       </View>
       <Content padder>
         <View
@@ -96,14 +108,18 @@ const styles = StyleSheet.create({
   },
   header: {
     elevation: 0,
+    backgroundColor: PRIMARYCOLOR,
   },
   billerView: {
-    height: hp(10),
-    backgroundColor: "yellow",
-    padding: hp(1),
+    height: hp(15),
+    backgroundColor: PRIMARYCOLOR,
+    paddingLeft: hp(2.5),
+    paddingTop: hp(1),
+    paddingRight: hp(2.5),
   },
   billerViewText: {
-    fontSize: hp(3),
+    fontSize: 19,
+    color: WHITE,
   },
 });
 
