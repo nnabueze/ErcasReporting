@@ -42,7 +42,6 @@ const LoginLogic = (navigation) => {
         persistLogin({ ...response });
       }
     } catch (e) {
-      console.log(e);
       setDisplayAlertMessage(e);
       setDisplaySpinner(false);
       setDisplayAlert(true);
@@ -50,7 +49,6 @@ const LoginLogic = (navigation) => {
   };
 
   const persistLogin = (credentials) => {
-    console.log(credentials);
     AsyncStorage.setItem("credentials", JSON.stringify(credentials))
       .then(() => {
         setStoredCredentials(credentials);

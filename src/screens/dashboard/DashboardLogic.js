@@ -46,6 +46,11 @@ const DashboardLogic = () => {
     if (itemValue !== "") {
       setSelectedValue(itemValue);
       setBillerId(itemValue);
+      var dashboard = {
+        billerName: billerName,
+        billers: allBillers,
+      };
+      persistDashboard(dashboard);
       callDashboardService(itemValue);
     }
   };
@@ -108,15 +113,15 @@ const DashboardLogic = () => {
           setDay5(result.data.Report.DayFive);
           setDay6(result.data.Report.DaySix);
         } else {
+          setErrorMessage(result.data.message);
           setIsError(true);
           setRefereshing(false);
-          setErrorMessage(result.data.message);
         }
       })
       .catch((err) => {
+        setErrorMessage(err.response.data.message);
         setIsError(true);
         setRefereshing(false);
-        setErrorMessage(err.response.data.message);
       });
   };
 
@@ -131,6 +136,15 @@ const DashboardLogic = () => {
         setStoredCredentials("");
       })
       .catch((error) => console.log(error));
+  };
+
+  const persistDashboard = (details) => {
+    AsyncStorage.setItem("dashbaord", JSON.stringify(details))
+      .then(() => {})
+      .catch((error) => {
+        setErrorMessage("Persis dashboard details failed");
+        setIsError(true);
+      });
   };
 
   return {
