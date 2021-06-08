@@ -101,17 +101,22 @@ const DashboardLogic = () => {
           setMonthlyAmount(result.data.MonthlyAmount);
           setcashAtHand(result.data.MonthlyCashAtHand);
           setAllBillers([...result.data.billers]);
-          setReport(result.data.Report);
+          setToday(result.data.Report.DayOne);
+          setYesterday(result.data.Report.DayTwo);
+          setDay3(result.data.Report.DayThree);
+          setDay4(result.data.Report.DayFour);
+          setDay5(result.data.Report.DayFive);
+          setDay6(result.data.Report.DaySix);
         } else {
           setIsError(true);
           setRefereshing(false);
-          setErrorMessage(result.data.Message);
+          setErrorMessage(result.data.message);
         }
       })
       .catch((err) => {
         setIsError(true);
         setRefereshing(false);
-        setErrorMessage(err.response.data.Message);
+        setErrorMessage(err.response.data.message);
       });
   };
 
