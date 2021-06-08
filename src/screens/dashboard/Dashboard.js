@@ -130,6 +130,12 @@ const Dashboard = () => {
     allBillers,
     displaySpinner,
     onDashboardMenuClick,
+    day3,
+    day4,
+    day5,
+    day6,
+    today,
+    yesterday,
   } = DashboardLogic();
   return (
     <Container>
@@ -289,7 +295,14 @@ const Dashboard = () => {
         </View>
         <View style={styles.listMdaView}>
           <View style={styles.displayLineChartContainer}>
-            <DisplayLineChart />
+            <DisplayLineChart
+              today={today}
+              yesterday={yesterday}
+              day3={day3}
+              day4={day4}
+              day5={day5}
+              day6={day6}
+            />
           </View>
         </View>
         {isError && ShowToast(errorMessage)}

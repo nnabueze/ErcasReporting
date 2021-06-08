@@ -25,6 +25,13 @@ const DashboardLogic = () => {
   const [allBillers, setAllBillers] = useState([]);
   const [displaySpinner, setDisplaySpinner] = useState(false);
 
+  const [today, setToday] = useState(0);
+  const [yesterday, setYesterday] = useState(0);
+  const [day3, setDay3] = useState(0);
+  const [day4, setDay4] = useState(0);
+  const [day5, setDay5] = useState(0);
+  const [day6, setDay6] = useState(0);
+
   useEffect(() => {
     callDashboardService(billerId);
   }, []);
@@ -58,6 +65,12 @@ const DashboardLogic = () => {
           setMonthlyAmount(result.data.MonthlyAmount);
           setcashAtHand(result.data.MonthlyCashAtHand);
           setAllBillers([...result.data.billers]);
+          setToday(result.data.Report.DayOne);
+          setYesterday(result.data.Report.DayTwo);
+          setDay3(result.data.Report.DayThree);
+          setDay4(result.data.Report.DayFour);
+          setDay5(result.data.Report.DayFive);
+          setDay6(result.data.Report.DaySix);
         } else {
           setRefereshing(false);
           setDisplaySpinner(false);
@@ -88,6 +101,7 @@ const DashboardLogic = () => {
           setMonthlyAmount(result.data.MonthlyAmount);
           setcashAtHand(result.data.MonthlyCashAtHand);
           setAllBillers([...result.data.billers]);
+          setReport(result.data.Report);
         } else {
           setIsError(true);
           setRefereshing(false);
@@ -133,6 +147,12 @@ const DashboardLogic = () => {
     allBillers,
     displaySpinner,
     onDashboardMenuClick,
+    day3,
+    day4,
+    day5,
+    day6,
+    today,
+    yesterday,
   };
 };
 
