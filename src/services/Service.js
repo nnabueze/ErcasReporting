@@ -1,5 +1,10 @@
 import * as axios from "axios";
-import { DASHBOARD_URL, LOGIN_URL } from "../Contants";
+import {
+  CLEARREMITTANCE_URL,
+  DASHBOARD_URL,
+  LOGIN_URL,
+  VERIFYREMITTANCE_URL,
+} from "../Contants";
 
 export const LoginService = async (payload) => {
   try {
@@ -20,6 +25,23 @@ export const DashboardService = (payload) => {
   };
 
   return axios.post(DASHBOARD_URL, formData);
+};
+
+export const VerifyRemittanceService = (billerId, remittanceId) => {
+  const formData = {
+    RemittanceId: remittanceId,
+    BillerId: billerId,
+  };
+  return axios.post(VERIFYREMITTANCE_URL, formData);
+};
+
+export const ClearRemittanceService = (billerId, remittanceId) => {
+  const formData = {
+    RemittanceId: remittanceId,
+    BillerId: billerId,
+  };
+
+  return axios.post(CLEARREMITTANCE_URL, formData);
 };
 
 export const handler = (err) => {

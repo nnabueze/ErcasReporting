@@ -45,11 +45,7 @@ const DashboardLogic = () => {
     if (itemValue !== "") {
       setSelectedValue(itemValue);
       setBillerId(itemValue);
-      var dashboard = {
-        billerName: billerName,
-        billers: allBillers,
-      };
-      persistDashboard(dashboard);
+      persistDashboard([...allBillers], billerName, billerId, role);
       callDashboardService(itemValue);
     }
   };
@@ -78,7 +74,8 @@ const DashboardLogic = () => {
           persistDashboard(
             [...result.data.billers],
             result.data.BillerName,
-            billerKey
+            billerKey,
+            role
           );
         } else {
           setRefereshing(false);
@@ -119,7 +116,8 @@ const DashboardLogic = () => {
           persistDashboard(
             [...result.data.billers],
             result.data.BillerName,
-            billerId
+            billerId,
+            role
           );
         } else {
           setErrorMessage(result.data.message);
@@ -139,12 +137,12 @@ const DashboardLogic = () => {
     return nameLetter.charAt(0).toUpperCase() + nameLetter.slice(1);
   };
 
-  const persistDashboard = (billers, billerName, billerId) => {
+  const persistDashboard = (billers, billerName, billerId, role) => {
     const details = {
       billers: billers,
       billerName: billerName,
-      billerId,
-      billerId,
+      billerId: billerId,
+      role: role,
     };
     AsyncStorage.setItem("dashbaord", JSON.stringify(details))
       .then(() => {})

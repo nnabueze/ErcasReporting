@@ -30,6 +30,7 @@ const TabNavigator = ({ children }) => {
       tabBarOptions={{
         showLabel: false,
         style: styles.tarbarOptions,
+        keyboardHidesTabBar: true,
       }}
     >
       <Tab.Screen
